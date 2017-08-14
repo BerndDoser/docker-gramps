@@ -6,18 +6,21 @@ MAINTAINER Bernd Doser <bernd.doser@braintwister.eu>
 RUN apt-get update \
  && apt-get -y install \
     curl \
-    xvfb \
-    xdg-utils \
+    gir1.2-gexiv2-0.10 \
+    gir1.2-gtk-3.0 \
+    gir1.2-osmgpsmap-1.0 \
+    graphviz \
+    librsvg2-2 \
+    make \
+    python3-bsddb3 \
     python3-gi \
     python3-gi-cairo \
-    python3-bsddb3 \
-    librsvg2-2 \
-    gir1.2-gtk-3.0 \
-    make \
     python3-pillow \
-    graphviz \
     python3-pip \
- && apt-get clean
+    xdg-utils \
+    xvfb \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 ADD https://github.com/gramps-project/gramps/releases/download/v4.2.5/python3-gramps_4.2.5_all.deb .
 
