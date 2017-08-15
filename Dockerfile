@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-MAINTAINER Bernd Doser <bernd.doser@braintwister.eu>
+LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
 
 # Install dependencies
 RUN apt-get update \
