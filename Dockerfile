@@ -20,6 +20,8 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/gramps-project/gramps/releases/download/v4.2.6/python3-gramps_4.2.6_all.deb .
+ADD https://github.com/gramps-project/gramps/releases/download/v4.2.6/python3-gramps_4.2.6_all.deb /tmp/gramps.deb
+RUN dpkg -i /tmp/gramps.deb \
+ && rm /tmp/gramps.deb
 
-RUN dpkg -i python3-gramps_4.2.6_all.deb
+CMD gramps
