@@ -1,6 +1,6 @@
 # docker-gramps
 
-Create docker image of GRAMPS
+Create docker image of [Gramps](https://gramps-project.org/)
 
 # Usage
 
@@ -11,4 +11,3 @@ Create docker image of GRAMPS
 * Run docker container
 
   docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro -v $(pwd):/data bernddoser/docker-gramps
-
