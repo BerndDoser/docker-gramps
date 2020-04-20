@@ -1,6 +1,16 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 LABEL maintainer="Bernd Doser <bernd.doser@braintwister.eu>"
+
+ARG TIMEZONE='Europe/Berlin'
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN echo $TIMEZONE > /etc/timezone && \
+  apt-get update && apt-get install -y tzdata && \
+  rm /etc/localtime && \
+  ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
+  dpkg-reconfigure -f noninteractive tzdata && \
+  apt-get clean
 
 # Install dependencies
 RUN apt-get update \
@@ -20,7 +30,7 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD https://github.com/gramps-project/gramps/releases/download/v4.2.8/python3-gramps_4.2.8_all.deb /tmp/gramps.deb
+ADD https://github.com/gramps-project/gramps/releases/download/v5.1.2/gramps_5.1.2-1_all.deb /tmp/gramps.deb
 RUN dpkg -i /tmp/gramps.deb \
  && rm /tmp/gramps.deb
 
